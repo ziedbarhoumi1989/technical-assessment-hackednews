@@ -12,7 +12,7 @@ router.route("/").get(function(req, res) {
     }
     if (!err) {
       var arr = [];
-      console.log(results);
+
       for (var i = 0; i < 10; i++) {
         var obj = {};
         obj.name = results[i].name;

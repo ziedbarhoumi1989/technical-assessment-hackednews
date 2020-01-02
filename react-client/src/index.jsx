@@ -56,7 +56,6 @@ class App2 extends React.Component {
       .then(resp => resp.json())
       .then(data => {
         this.setState({ data: data, isloading: false });
-        console.log(data);
       });
   }
   render() {
