@@ -1,24 +1,28 @@
 var express = require("express");
-var storyController = require("../../db/models/story.js");
+var authorController = require("../../db/models/author.js");
 
 var router = express.Router();
 
 router.route("/").get(function(req, res) {
   // TODO: Replace this with stories you've retrieved from the database
 
-  storyController.findAll((err, results) => {
+  authorController.findAll((err, results) => {
     if (err) {
       console.error.bind(err);
     }
     if (!err) {
       var arr = [];
+      console.log(results);
       for (var i = 0; i < 10; i++) {
-        arr.push(results[i]);
+        var obj = {};
+        obj.name = results[i].name;
+        obj.karma = results[i].karma;
+        obj.about = results[i].about;
+        arr.push(obj);
       }
       res.status(200).send(arr);
     }
   });
-
   // res.json([
   //   {
   //     author: "ocdtrekkie",
